@@ -1,0 +1,74 @@
+<div class="page-header">
+    <h3>Authors</h3>
+</div>
+<div class="page-header">
+    <h4> <a class="btn btn-link"
+            href="{{'/authors/create'}}">
+        <i class="fa fa-map-marker"></i> Add New Author
+    </a></h4>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>phone</th>
+        <th>Edit</th>
+        <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody style="background-color:#aaccbb;" v-for = 'author in authors'>
+        <tr>
+        <td>
+            <div v-if="Editting">
+                <input   name='name' v-model='author.name'>
+            </div>
+                <div v-else>
+                    <p>{{author.name}}</p>
+                </div>
+        </td>
+        <td>
+            <div v-if="Editting">
+                <input  name='email' v-model='author.email'>
+            </div>
+            <div v-else>
+                <p>{{author.email}}</p>
+            </div>
+        </td>
+        <td>
+            <div v-if="Editting">
+                <input  name='address' v-model='author.address'>
+            </div>
+            <div v-else>
+                <p>{{author.address}}</p>
+            </div>
+        </td>
+        <td>
+            <div v-if="Editting">
+                <input  name='phone' v-model='author.phone'>
+            </div>
+            <div v-else>
+                <p>{{author.phone}}</p>
+            </div>
+        </td>
+            <td>
+                <div v-if="Editting">
+                    <button type="submit" class="btn btn-link" v-on:click="save($index)">Save</button>
+                </div>
+            <div v-else>
+                <button class="btn btn-link"  v-on:click="isEditting()">Update</button>
+            </div>
+
+            </td>
+
+            <div>
+                <td>
+                    <button class="btn btn-link"  v-on:click="Delete($index)">Remove</button>
+                </td>
+            </div>
+
+    </tr>
+    </tbody>
+</table>
