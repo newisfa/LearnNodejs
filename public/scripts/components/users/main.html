@@ -1,10 +1,10 @@
 <div class="page-header">
-    <h3>Authors</h3>
+    <h3>users</h3>
 </div>
 <div class="page-header">
     <h4> <a class="btn btn-link"
-            href="{{'/authors/create'}}">
-        <i class="fa fa-map-marker"></i> Add New Author
+            href="{{'/users/create'}}">
+        <i class="fa fa-map-marker"></i> Add New user
     </a></h4>
 </div>
 
@@ -13,46 +13,38 @@
     <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Address</th>
-        <th>phone</th>
+        <th>password</th>
         <th>Edit</th>
         <th>Remove</th>
     </tr>
     </thead>
-    <tbody style="background-color:#aaccbb;" v-for = 'author in authors'>
+    <tbody style="background-color:#aaccbb;" v-for = 'user in users'>
         <tr>
         <td>
             <div v-if="Editting">
-                <input   name='name' v-model='author.name'>
+                <input   name='name' v-model='user.name'>
             </div>
                 <div v-else>
-                    <p>{{author.name}}</p>
+                    <p>{{user.name}}</p>
                 </div>
         </td>
         <td>
             <div v-if="Editting">
-                <input  name='email' v-model='author.email'>
+                <input  name='email' v-model='user.email'>
             </div>
             <div v-else>
-                <p>{{author.email}}</p>
+                <p>{{user.email}}</p>
             </div>
         </td>
         <td>
             <div v-if="Editting">
-                <input  name='address' v-model='author.address'>
+                <input  name='address' v-model='user.password'>
             </div>
             <div v-else>
-                <p>{{author.address}}</p>
+                <p>{{user.password}}</p>
             </div>
         </td>
-        <td>
-            <div v-if="Editting">
-                <input  name='phone' v-model='author.phone'>
-            </div>
-            <div v-else>
-                <p>{{author.phone}}</p>
-            </div>
-        </td>
+
             <td>
                 <div v-if="Editting">
                     <button type="submit" class="btn btn-link" v-on:click="save($index)">Save</button>

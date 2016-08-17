@@ -1,0 +1,25 @@
+{%extends "layouts/user.html"%}
+
+{%block content%}
+<h3>Register New Account</h3>
+    <div style="width:40%" class="panel center-block">
+        <div class="panel-body">
+            <form action="/users/create" method="post">
+                <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label>password</label>
+                    <input type="text" class="form-control" name="password" placeholder="password">
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+{%endblock%}

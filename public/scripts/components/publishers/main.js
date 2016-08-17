@@ -25,17 +25,14 @@ module.exports = Vue.extend({
         save: function(i) {
             var publisher = this.publishers[i];
             this.$http.put('publisher/' + publisher.id, publisher).then(function(req, res){
-                console.log("ID:", publisher.id);
-                console.log("DATA:", publisher);
                 this.publisher = req.data
+                this.Editting = false;
             }, function (err) {
             });
         },
         Delete: function(i) {
             var publisher = this.publishers[i];
             this.$http.delete('publisher/' + publisher.id, publisher).then(function(req, res){
-                console.log("ID:", publisher.id);
-                console.log("DATA:", publisher);
                 this.publisher = req.data
             }, function (err) {
             });

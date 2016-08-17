@@ -8,31 +8,31 @@ module.exports = Vue.extend({
     props:["id"],
     data: function(){
         return {
-            authors: [],
+            users: [],
             Editting:false
         }
     },
     ready: function() {
-        // GET /authors/
-            this.$http.get('author').then(function (res) {
-                this.authors = res.data;
+        // GET /users/
+            this.$http.get('users').then(function (res) {
+                this.users = res.data;
             }, function (err) {
 
             });
     },
     methods: {
         save: function(i) {
-            var author = this.authors[i];
-        this.$http.put('author/' + author.id, author).then(function(req, res){
-            this.author = req.data
+            var user = this.users[i];
+        this.$http.put('users/' + user.id, user).then(function(req, res){
+            this.user = req.data
             this.Editting = false;
         }, function (err) {
         });
     },
         Delete: function(i) {
-            var author = this.authors[i];
-        this.$http.delete('author/' + author.id, author).then(function(req, res){
-            this.author = req.data
+            var user = this.users[i];
+        this.$http.delete('users/' + user.id, user).then(function(req, res){
+            this.user = req.data
         }, function (err) {
         });
     },

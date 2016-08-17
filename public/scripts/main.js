@@ -11,9 +11,6 @@
             "components/authors":{
                 main: "main.js"
             },
-            "components/author":{
-                main: "main.js"
-            },
             "components/publishers":{
                 main: "main.js"
             },
@@ -21,6 +18,9 @@
                 main: "main.js"
             },
             "components/books":{
+                main: "main.js"
+            },
+            "components/users":{
                 main: "main.js"
             }
         }

@@ -41,7 +41,7 @@ app.get("/home", function(req, res){
 var baseUrl = "http://localhost:9000/api";
 
 app.post("/register", function(req, res){
-   request.post(baseUrl+"/users", {
+   request.post(baseUrl+"/authors", {
        json:true,
        body : {
            name: req.body.name,
@@ -60,6 +60,31 @@ app.post("/register", function(req, res){
 
 app.get("/authors/create", function(req, res){
     res.render("authors/create.html")
+});
+app.get("/users/create", function(req, res){
+    res.render("users/create.html")
+});
+
+app.post("/users/create", function(req, res){
+    request.post(baseUrl + "/users", {
+        headers:{
+            token:req.session.user.token
+        },
+        json:true,
+        body : {
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        }
+    }, function(err, response, body){
+        if(body.status == "Success"){
+            req.session.user = body.body;
+            res.redirect("/users");
+        }else{
+            req.flash("error", body.body);
+            res.redirect("back")
+        }
+    })
 });
 app.post("/authors/create", function(req, res){
     request.post(baseUrl + "/author", {
@@ -113,6 +138,9 @@ app.post("/publishers/create", function(req, res){
 
 app.get("/riviews/remove/:id", function(req, res){
     res.render("riviews/list.html")
+});
+app.get("/users/remove/:id", function(req, res){
+    res.render("users/list.html")
 });
 app.get("/riviews/create", function(req, res){
     res.render("riviews/create.html")
@@ -201,6 +229,9 @@ app.use("/", function(req, res, next){
 });
 app.get("/authors", function(req, res){
     res.render("authors/list.html")
+});
+app.get("/users", function(req, res){
+    res.render("users/list.html")
 });
 
 app.get("/publishers", function(req,res){

@@ -25,9 +25,8 @@ module.exports = Vue.extend({
         save: function(i) {
             var riview = this.riviews[i];
             this.$http.put('riview/' + riview.id, riview).then(function(req, res){
-                console.log("ID:", riview.id);
-                console.log("DATA:", riview);
                 this.riview = req.data
+                this.Editting = false;
             }, function (err) {
             });
         },

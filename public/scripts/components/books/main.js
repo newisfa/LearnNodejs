@@ -25,17 +25,14 @@ module.exports = Vue.extend({
         save: function(i) {
             var book = this.books[i];
             this.$http.put('books/' + book.id, book).then(function(req, res){
-                console.log("ID:", book.id);
-                console.log("DATA:", book);
                 this.book = req.data
+                this.Editting = false;
             }, function (err) {
             });
         },
         Delete: function(i) {
             var book = this.books[i];
             this.$http.delete('books/' + book.id, book).then(function(req, res){
-                console.log("ID:", book.id);
-                console.log("DATA:", book);
                 this.book = req.data
             }, function (err) {
             });
